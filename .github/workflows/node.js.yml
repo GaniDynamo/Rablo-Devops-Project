@@ -7,8 +7,9 @@ on:
 
 env:
   DOCKER_IMAGE: dynamo28/rablo-assignment:v1.0
-  EC2_HOST_1: 13.233.143.124  
-  EC2_HOST_2: 13.232.113.175  
+  EC2_HOST_1: 13.233.143.124
+  EC2_HOST_2: 13.232.113.175
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,10 +44,10 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ env.DOCKER_IMAGE }}
-            docker stop rablo-app || true
-            docker rm rablo-app || true
-            docker run -d -p 80:80 --name rablo-app --restart unless-stopped ${{ env.DOCKER_IMAGE }}
+            sudo docker pull ${{ env.DOCKER_IMAGE }}
+            sudo docker stop rablo-app || true
+            sudo docker rm rablo-app || true
+            sudo docker run -d -p 80:80 --name rablo-app --restart unless-stopped ${{ env.DOCKER_IMAGE }}
 
       - name: Deploy to EC2 instance 2
         uses: appleboy/ssh-action@v0.1.7
@@ -55,7 +56,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ env.DOCKER_IMAGE }}
-            docker stop rablo-app || true
-            docker rm rablo-app || true
-            docker run -d -p 80:80 --name rablo-app --restart unless-stopped ${{ env.DOCKER_IMAGE }}
+            sudo docker pull ${{ env.DOCKER_IMAGE }}
+            sudo docker stop rablo-app || true
+            sudo docker rm rablo-app || true
+            sudo docker run -d -p 80:80 --name rablo-app --restart unless-stopped ${{ env.DOCKER_IMAGE }}
