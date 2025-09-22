@@ -1,5 +1,4 @@
 # Rablo-Devops-Project
-# Rablo DevOps Project
 
 ## Overview
 
