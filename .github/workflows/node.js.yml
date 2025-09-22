@@ -49,7 +49,7 @@ jobs:
             docker run -d -p 80:80 --name rablo-app --restart unless-stopped ${{ env.DOCKER_IMAGE }}
 
       - name: Deploy to EC2 instance 2
-        uses: appleboy/ssh-action@v1.5.4
+        uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ env.EC2_HOST_2 }}
           username: ec2-user
