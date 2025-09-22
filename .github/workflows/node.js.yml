@@ -27,7 +27,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./docker-app
+          context: ./rablo-devops-assignment/docker-app
           push: true
           tags: |
             ${{ env.DOCKER_IMAGE }}
